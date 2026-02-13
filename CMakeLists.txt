@@ -16,6 +16,24 @@ endif()
 # Define the project name - used by IDEs and build systems
 project ("Telemetry-Processor")
 
+# Enable testing for entire project
+enable_testing()
+
+# Fetch Google Test
+include(FetchContent)
+FetchContent_Declare(
+	googletest
+	GIT_REPOSITORY https://github.com/google/googletest.git
+	GIT_TAG v1.14.0
+
+)
+
+# For Windows: Prevent overriding the parent project's compiler/linker settings
+set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
+
+# Make Google Test available to all subdirectories
+FetchContent_MakeAvailable(googletest)
+
 # Include sub-projects - adds the subdirectory containing the actual source code
 # This allows for modular project structure with multiple components
 add_subdirectory ("Telemetry-Processor")
