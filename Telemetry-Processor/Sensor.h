@@ -2,7 +2,7 @@
 #define SENSOR_H
 
 #include <string>
-#include <memory>
+#include <memory> // used for memory management (unique_ptr, shared_ptr, weak_ptr)
 #include <random>
 
 class Sensor {
