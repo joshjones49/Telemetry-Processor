@@ -22,9 +22,9 @@ int main() {
 
     // Run simulation with exception handling
     try {
-        // Execute 12 cycles with 400ms delay between each
+        // Execute n cycles with x delay between each
         // Each cycle: read all sensors, validate, check thresholds, log
-        processor.runSim(12, 400);
+        processor.runSim(5, 5000);
     }
     catch (const std::exception& e) {
         // Catch any runtime errors and display error message

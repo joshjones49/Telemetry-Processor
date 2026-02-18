@@ -13,12 +13,6 @@
  * 
  * Manages a collection of sensors, reads data from them in cycles,
  * validates readings, checks thresholds, and logs all activity.
- * 
- * Demonstrates:
- * - RAII with smart pointers (unique_ptr for exclusive ownership)
- * - Composition pattern (has-a Logger, has-many Sensors)
- * - Polymorphism (processes different sensor types uniformly)
- * - Thread management (sleep between cycles)
  */
 class TelemetryProcessor {
 public:

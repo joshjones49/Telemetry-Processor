@@ -14,6 +14,18 @@ CMakeUserPresets.json
 build/
 out/
 
+# Google Test artifacts (from FetchContent)
+googletest-build/
+googletest-src/
+lib/
+
+# CTest files
+DartConfiguration.tcl
+*.cmake
+
+# Test results
+Testing/Temporary/
+
 # Compiled binaries and libraries
 *.exe
 *.out
@@ -48,6 +60,7 @@ MinSizeRel/
 
 # Visual Studio Code
 .vscode/
+*.code-workspace
 
 # CLion
 .idea/
@@ -58,3 +71,23 @@ cmake-build-*/
 .ninja_log
 build.ninja
 rules.ninja
+
+# Windows specific
+Thumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# macOS specific
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Temporary files
+*.tmp
+*.temp
+*.swp
+*.swo
+*~
+
+# Logs
+*.log

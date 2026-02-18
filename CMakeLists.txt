@@ -19,14 +19,19 @@ project ("Telemetry-Processor")
 # Enable testing for entire project
 enable_testing()
 
-# Fetch Google Test
+# Fetch Google Test framework
 include(FetchContent)
 FetchContent_Declare(
 	googletest
 	GIT_REPOSITORY https://github.com/google/googletest.git
 	GIT_TAG v1.14.0
-
 )
+
+# For Windows: Prevent overriding the parent project's compiler/linker settings
+set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
+
+# Make Google Test available to all subdirectories
+FetchContent_MakeAvailable(googletest)
 
 # For Windows: Prevent overriding the parent project's compiler/linker settings
 set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
