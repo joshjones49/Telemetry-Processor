@@ -16,8 +16,7 @@ Demonstrates:
 - **CMake** 3.10 or higher
 - **C++20** compatible compiler:
   - Visual Studio 2019+ (MSVC)
-  - GCC 10+
-  - Clang 10+
+  - GCC 10+/Clang 10+
 - **Git** (for cloning and downloading Google Test)
 - **Internet connection** (first build only - downloads Google Test automatically)
 
