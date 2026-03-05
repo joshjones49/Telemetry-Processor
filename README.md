@@ -116,25 +116,22 @@ Telemetry-Processor/
 ├── README.md
 ├── .gitignore
 └── Telemetry-Processor/
-    ├── CMakeLists.txt          # Project CMake configuration
-    ├── main.cpp                # Entry point
-    ├── Telemetry-Processor.h   # Main processor class
+    ├── CMakeLists.txt          # App/library CMake configuration
+    ├── main.cpp                # Application entry point
+    ├── Telemetry-Processor.h   # Processor interface
     ├── Telemetry-Processor.cpp
-    ├── Sensor.h                # Sensor hierarchy
+    ├── Sensor.h                # Sensor interfaces/classes
     ├── Sensor.cpp
-    ├── Logger.h                # Thread-safe logger
+    ├── Logger.h                # Thread-safe logger interface
     ├── Logger.cpp
     └── tests/
-        ├── CMakeLists.txt      # Test configuration
-        ├── test_main.cpp       # Test entry point
+        ├── CMakeLists.txt
+        ├── test_main.cpp
         ├── Logger/
-        │   ├── logger_tests.h
         │   └── logger_tests.cpp
         ├── Sensor/
-        │   ├── sensor_tests.h
         │   └── sensor_tests.cpp
         └── TelPro/
-            ├── telpro_tests.h
             └── telpro_tests.cpp
 ```
 
