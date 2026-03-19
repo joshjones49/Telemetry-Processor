@@ -171,7 +171,3 @@ cd build
 cmake ..
 cmake --build .
 ```
-
-## License
-
-This project is provided as-is for educational and demonstration purposes.
