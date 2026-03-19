@@ -13,6 +13,7 @@ bool Sensor::isValid(double value) const {
 	return true;
 }
 
+#pragma region ALTITUDE SENSOR
 AltitudeSensor::AltitudeSensor(std::string name)
 	: Sensor(std::move(name)) { }
 
@@ -25,7 +26,9 @@ double AltitudeSensor::readData() {
 std::string AltitudeSensor::getType() const {
 	return "Altitude";
 }
+#pragma endregion
 
+#pragma region VELOCITY SENSOR
 VelocitySensor::VelocitySensor(std::string name)
 	: Sensor(std::move(name)) { }
 
@@ -38,6 +41,7 @@ double VelocitySensor::readData() {
 std::string VelocitySensor::getType() const {
 	return "Velocity";
 }
+#pragma endregion
 
 // Creates a concrete sensor by type name.
 std::unique_ptr<Sensor> createSensor(const std::string& type, const std::string& name) {

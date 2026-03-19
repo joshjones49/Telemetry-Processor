@@ -19,7 +19,7 @@ add_executable (Telemetry-Processor
 	"Sensor.cpp"                # Sensor implementations
 	"Logger.h"                  # Logger class declaration
 	"Logger.cpp"                # Logger implementation
-)
+ "data.h")
 
 # Set C++20 standard if CMake version supports it (3.12+)
 # Enables modern C++ features like concepts, ranges, and designated initializers

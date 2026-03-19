@@ -14,6 +14,9 @@ public:
 	// Logs processor startup.
 	TelemetryProcessor();
 
+	// overloaded contructor
+	TelemetryProcessor(std::string name);
+
 	// Default cleanup.
 	~TelemetryProcessor() = default;
 
@@ -23,7 +26,12 @@ public:
 	// Runs sensor polling for `num_cycles` with `delay_ms` pauses.
 	void runSim(int num_cycles = 20, int delay_ms = 300);
 
+	std::string getName() const noexcept;
+
 private:
+	// processor name
+	std::string name_;
+
 	// Owned sensor instances.
 	std::vector<std::unique_ptr<Sensor>> sensors_;
 

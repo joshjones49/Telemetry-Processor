@@ -3,14 +3,24 @@
 #include <iostream>
 #include <iomanip>
 
+std::string TelemetryProcessor::getName() const noexcept {
+	return name_;
+}
+
+// overloaded contructor
+TelemetryProcessor::TelemetryProcessor(std::string name) :
+	TelemetryProcessor(std::move(name)) {
+	logger_.log(name_ + " Processor Initialized");
+}
+
 // Log startup when processor is constructed.
 TelemetryProcessor::TelemetryProcessor() {
-	logger_.log("Telemetry Processor initialized");
+	logger_.log(name_ + " Processor Initialized");
 }
 
 // Store a new sensor and record it.
 void TelemetryProcessor::addSensor(std::unique_ptr<Sensor> sensor) {
-	logger_.log("Added sensor: " + sensor->getName() + " (" + sensor->getType() + ")");
+	logger_.log("Processor: " + name_ + " Added Sensor: " + sensor->getName() + " (" + sensor->getType() + ")");
 
 	sensors_.push_back(std::move(sensor));
 }
@@ -28,27 +38,18 @@ void TelemetryProcessor::runSim(int num_cycles, int delay_ms) {
 	logger_.log("Simulation completed");
 }
 
-// Process each sensor once for this cycle.
+// Process sensors in parallel
 void TelemetryProcessor::processAllSensors() {
+	std::vector<std::thread> threads;
+
 	for (const auto& sensor : sensors_) {
-		double value = sensor->readData();
-		std::string name = sensor->getName();
-		std::string type = sensor->getType();
-
-		std::cout << std::fixed << std::setprecision(1);
-		std::cout << name << " (" << type << "): " << value;
-
-		if (sensor->isValid(value)) {
-			std::cout << " [OK]";
-		}
-		else {
-			std::cout << " [INVALID]";
-		}
-		std::cout << "\n";
-
-		checkThresholds(value, name, type);
-		logger_.log(name + ": " + std::to_string(value));
+		threads.emplace_back([&logger = logger_, &sensor]() {
+			double value = sensor->readData();
+			// multiple threads calling log() at the same time
+			logger.log(sensor->getName() + ": " + std::to_string(value));
+		});
 	}
+	for (auto& t : threads) t.join();
 }
 
 // Emit alerts when readings cross fixed limits.
